@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.todo-head {
+  width: 600px;
+  margin: 20px auto 0;
+  background-color: #f6f6f6;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-head input[type="text"] {
+  display: inline-block;
+  flex: 1;
+  padding: 10px 15px;
+  height: 54px;
+  background-color: #f6f6f6;
+  border: none;
+  font-size: 22px;
+  border: 2px solid #2196f3;
+}
+.todo-head input[type="text"]:focus {
+  outline: none;
+}
+.todo-head .add {
+  display: inline-block;
+  background-color: white;
+  font-size: 20px;
+  right: 5px;
+  height: 54px;
+  width: 54px;
+  border: 2px solid #2196f3;
+  line-height: 54px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-left: 10px;
+}
+.todo-head .add:hover {
+  background-color: #2196f3;
+  color: white;
+}
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+  padding: 10px;
+}
+.todo-container > span {
+  display: block;
+  padding: 10px;
+  background-color: white;
+}
+.todo-container > span:not(:last-child) {
+  margin-bottom: 10px;
+}
+.no-task-message {
+  color: #777;
+}
+.todo-box input[type="checkbox"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.todo-box.finished {
+  text-decoration: line-through;
+}
+.todo-box .delete {
+  background-color: #ff4638;
+  color: white;
+  padding: 3px;
+  font-size: 12px;
+  float: right;
+  cursor: pointer;
+  user-select: none;
+}
+.todo-footer {
+  width: 600px;
+  margin: 20px auto;
+  background-color: #f6f6f6;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.todo-footer > span {
+  display: inline-block;
+  font-weight: bold;
+}
+.todo-footer .tasks span,
+.todo-footer .completed span {
+  padding: 2px 4px;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+}
+.todo-footer .tasks span {
+  background-color: #f44336;
+}
+.todo-footer .completed span {
+  background-color: #00bcd4;
+}
