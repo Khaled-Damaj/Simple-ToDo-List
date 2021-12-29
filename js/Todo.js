@@ -5,16 +5,17 @@ let complete = document.querySelector(".completed span");
 let tasks = document.querySelector(".tasks span");
 
 window.onload = () => {
+  input.value = "";
   input.focus();
 };
 
 addBtn.onclick = (e) => {
   if (input.value === "") {
-    console.log("Empty");
+    alert("Input cannot be empty!");
   } else {
     let noTaskMessage = document.querySelector(".no-task-message");
 
-    if (document.body.contains(document.querySelector(".no-task-message"))) {
+    if (document.body.contains(noTaskMessage)) {
       noTaskMessage.remove();
     }
 
@@ -24,15 +25,13 @@ addBtn.onclick = (e) => {
     todoBoxs.forEach((box) => {
       if (box.children[1].textContent === input.value) {
         isAdded = true;
-        console.log("ee");
       }
     });
 
     if (!isAdded) {
       let mainSpan = document.createElement("span");
       mainSpan.setAttribute("class", "todo-box");
-      mainSpan.innerHTML = `
-        <input type="checkbox" class="checkbox" name="" id="" />
+      mainSpan.innerHTML = `<input type="checkbox" class="checkbox" name="" id="" />
         <span>${input.value}</span>
         <span class="delete">Delete</span>`;
       container.appendChild(mainSpan);
@@ -45,12 +44,15 @@ addBtn.onclick = (e) => {
 
 document.addEventListener("click", function (e) {
   if (e.target.className === "delete") {
-    e.target.parentNode.remove();
+    let proceed = confirm("Are you sure you want to delete?");
+    if (proceed) {
+      e.target.parentNode.remove();
+    }
     if (container.childElementCount === 0) {
       createNoTaskMessage();
     }
   }
-  if (e.target.checked) {
+  if (e.target.className === "checkbox") {
     if (!e.target.parentNode.classList.contains("finished")) {
       e.target.parentNode.classList.add("finished");
     } else {
@@ -71,6 +73,7 @@ function createNoTaskMessage() {
 function calculateTasks() {
   if (document.body.contains(document.querySelector(".no-task-message"))) {
     tasks.textContent = 0;
+    complete.textContent = 0;
   } else {
     tasks.textContent = container.childElementCount;
     complete.textContent = document.querySelectorAll(".finished").length;
